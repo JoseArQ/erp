@@ -45,7 +45,9 @@ INSTALLED_APPS = [
 ]
 
 LOCAL_INSTALLED_APP = [
-    'users'
+    'users',
+    'company',
+    # 'documents',
 ]
 
 INSTALLED_APPS += LOCAL_INSTALLED_APP
