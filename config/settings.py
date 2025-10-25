@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from datetime import timedelta
+
 from dotenv import load_dotenv
 
 # load environment variables from .env file
@@ -47,7 +49,7 @@ INSTALLED_APPS = [
 LOCAL_INSTALLED_APP = [
     'users',
     'company',
-    # 'documents',
+    'documents',
 ]
 
 INSTALLED_APPS += LOCAL_INSTALLED_APP
@@ -149,9 +151,12 @@ REST_FRAMEWORK = {
     ),
 }
 
-from datetime import timedelta
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
