@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from company.models import Company
+
 User = get_user_model()
 
 
@@ -10,7 +12,9 @@ def create_user_with_role(
         password: str, 
         first_name: str, 
         last_name: str, 
-        role: str):
+        role: str,
+        company : Company,
+        ):
     """
     Create a new user with the specified role and securely hashed password.
 
@@ -21,6 +25,7 @@ def create_user_with_role(
         first_name (str): The user's first name.
         last_name (str): The user's last name.
         role (str): The role assigned to the user.
+        company : (Company) : The compoany assigned to the user.
 
     Returns:
         User: The created user instance.
@@ -31,6 +36,7 @@ def create_user_with_role(
         first_name=first_name,
         last_name=last_name,
         role=role,
+        company=company,
     )
     user.set_password(password)
     user.save()
